@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joy Leap Studio - Immersive AR/VR & Game Development</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#2563EB", secondary: "#0EA5E9" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      background: linear-gradient(to bottom, #ffffff, #f8fafc);
+      }
+      .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .hover-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px -5px rgba(140, 82, 255, 0.15);
+      }
+      .gradient-text {
+      background: linear-gradient(90deg, #2563EB, #0EA5E9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      }
+      .service-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(140, 82, 255, 0.1), 0 10px 10px -5px rgba(140, 82, 255, 0.04);
+      }
+      .nav-link {
+      position: relative;
+      }
+      .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #8C52FF;
+      transition: width 0.3s ease;
+      }
+      .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+      }
+      .custom-checkbox {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #8C52FF;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+      }
+      .custom-checkbox:checked {
+      background-color: #8C52FF;
+      }
+      .custom-checkbox:checked::after {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      top: 2px;
+      left: 6px;
+      transform: rotate(45deg);
+      }
+      .custom-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+      }
+      .custom-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      }
+      .switch-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #e2e8f0;
+      transition: .4s;
+      border-radius: 34px;
+      }
+      .switch-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+      }
+      input:checked + .switch-slider {
+      background-color: #8C52FF;
+      }
+      input:checked + .switch-slider:before {
+      transform: translateX(26px);
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Header/Navigation -->
+    <header
+      class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white bg-opacity-95 backdrop-blur-sm shadow-sm"
+    >
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <a href="#" class="text-3xl font-['Pacifico'] text-primary"
+            >Joy Leap Studio</a
+          >
+          <nav class="hidden md:flex items-center space-x-8">
+            <a
+              href="#home"
+              class="nav-link text-gray-800 hover:text-primary font-medium"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="nav-link text-gray-800 hover:text-primary font-medium"
+              >Tentang</a
+            >
+            <a
+              href="#vision"
+              class="nav-link text-gray-800 hover:text-primary font-medium"
+              >Visi</a
+            >
+            <a
+              href="#services"
+              class="nav-link text-gray-800 hover:text-primary font-medium"
+              >Layanan</a
+            >
+            <a
+              href="#contact"
+              class="nav-link text-gray-800 hover:text-primary font-medium"
+              >Kontak</a
+            >
+            <a
+            href="#about"
+              class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap"
+            >
+              Get Started
+          </a>
+          </nav>
+          <div class="md:hidden w-10 h-10 flex items-center justify-center">
+            <button id="mobile-menu-button" class="text-gray-800">
+              <i class="ri-menu-line ri-lg"></i>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4">
+          <div class="flex flex-col space-y-4">
+            <a href="#home" class="text-gray-800 hover:text-primary font-medium"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="text-gray-800 hover:text-primary font-medium"
+              >Tentang</a
+            >
+            <a
+              href="#vision"
+              class="text-gray-800 hover:text-primary font-medium"
+              >Visi</a
+            >
+            <a
+              href="#services"
+              class="text-gray-800 hover:text-primary font-medium"
+              >Layanan</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-800 hover:text-primary font-medium"
+              >Kontak</a
+            >
+            <button
+              class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap w-full"
+            >
+              Get Started
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative min-h-screen flex items-center pt-20"
+      style="background-image: url('https://readdy.ai/api/search-image?query=modern%20minimalist%20tech%20space%20with%20floating%20holographic%20elements%2C%20geometric%20shapes%2C%20and%20subtle%20light%20trails%2C%20clean%20design%20with%20soft%20ambient%20lighting%2C%20professional%203D%20visualization%20with%20depth%20of%20field%2C%20ensure%20left%20side%20has%20clean%20gradient%20for%20text%20overlay%2C%20teal%20and%20purple%20color%20scheme&width=1920&height=1080&seq=1&orientation=landscape'); background-size: cover; background-position: center;"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-transparent"
+      ></div>
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="w-full md:w-3/5 text-white">
+          <div class="space-y-6">
+            <span
+              class="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium text-white/90"
+              >Welcome to Joy Leap Studio</span
+            >
+            <h1
+              class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight bg-gradient-to-r from-white via-white to-secondary bg-clip-text text-transparent"
+            >
+              Mengubah Imajinasi Menjadi Realitas lewat Teknologi Imersif
+            </h1>
+            <p class="text-xl text-gray-200 leading-relaxed">
+              Kami adalah studio kreatif berbasis teknologi yang menghadirkan
+              pengalaman interaktif masa depan lewat AR, VR, dan pengembangan game.
+              Wujudkan ide Anda dalam bentuk realitas imersif.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 pt-4">
+              <a
+              href="#about"
+                class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 !rounded-button font-medium hover:opacity-90 transition-all whitespace-nowrap shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
+              >
+                Jelajahi Karya Kami
+            </a>
+              <a
+              href="#contact"
+                class="glass-effect text-white px-8 py-4 !rounded-button font-medium hover:bg-white/30 transition-all whitespace-nowrap"
+              >
+                Kontak Kami Sekarang
+        </a>
+            </div>
+            <div class="flex items-center gap-8 pt-12">
+              <div class="flex items-center gap-2">
+                <i class="ri-award-line text-secondary text-2xl"></i>
+                <span class="text-sm">Award-winning Studio</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i
+                  class="ri-customer-service-2-line text-secondary text-2xl"
+                ></i>
+                <span class="text-sm">24/7 Support</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="ri-global-line text-secondary text-2xl"></i>
+                <span class="text-sm">Global Reach</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
+      >
+        <div class="w-8 h-8 flex items-center justify-center text-white">
+          <i class="ri-arrow-down-line ri-lg"></i>
+        </div>
+      </div>
+    </section>
+    <!-- About Us Section -->
+    <section id="about" class="py-32 bg-gradient-to-b from-white to-gray-50/50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-20">
+          <span
+            class="inline-block px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-4"
+            >Tentang Kami</span
+          >
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">
+            Tentang <span class="gradient-text">Joy Leap</span>
+          </h2>
+          <p class="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
+            Joy Leap Studio adalah perusahaan pengembang game
+              
+          </p>
+        </div>
+        <div class="flex flex-col md:flex-row gap-12 items-center">
+          <div class="w-full md:w-1/2">
+            <img
+              src="Vr 2.png"
+              alt="Joy Studio Team"
+              class="rounded-lg shadow-xl w-full h-auto object-cover"
+            />
+          </div>
+          <div class="w-full md:w-1/2">
+            <h3 class="text-2xl font-semibold mb-4">Cerita Kami</h3>
+            <p class="text-gray-700 mb-6">
+              Joy Leap Studio adalah perusahaan pengembang gam
+             asal Surabaya, Indonesia, yang didirikan pada 15 Juni 2015.
+             Dengan pengalaman lebih dari 8 tahun, studio ini mengkhususkan diri dalam pengembangan game edukasi
+              AR (Augmented Reality), dan VR (Virtual Reality).
+            </p>
+            <h3 class="text-2xl font-semibold mb-4">Pendekatan Kami</h3>
+            <p class="text-gray-700 mb-6">
+              Di Joy Leap Studio, kami percaya bahwa teknologi harus digunakan untuk menciptakan pengalaman
+              yang memikat dan mendalam. Pendekatan kami menggabungkan kreativitas, inovasi, dan kolaborasi
+              untuk menghasilkan solusi teknologi yang tidak hanya efektif, tetapi juga menyenangkan dan mengedukasi
+            </p>
+            <div class="grid grid-cols-3 gap-6 mt-8">
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mx-auto mb-3"
+                >
+                  <i class="ri-code-s-slash-line ri-lg text-primary"></i>
+                </div>
+                <h4 class="font-medium">Developers</h4>
+              </div>
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mx-auto mb-3"
+                >
+                  <i class="ri-palette-line ri-lg text-primary"></i>
+                </div>
+                <h4 class="font-medium">Designers</h4>
+              </div>
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mx-auto mb-3"
+                >
+                  <i class="ri-lightbulb-line ri-lg text-primary"></i>
+                </div>
+                <h4 class="font-medium">Creators</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Vision & Mission Section -->
+    <section id="vision" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+             <span class="gradient-text">Visi & Misi</span>Kami
+          </h2>
+          <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+        </div>
+        <div class="mb-16">
+          <div
+            class="max-w-3xl mx-auto text-center p-8 rounded-lg bg-gradient-to-r from-primary/5 to-secondary/5 shadow-lg"
+          >
+            <h3 class="text-2xl font-semibold mb-4">Visi Kami</h3>
+            <p class="text-xl text-gray-700">
+              Joy Leap Studio dengan penuh semangat berkomitmen untuk menjadikan
+              dirinya sebagai pengembang game Teknologi Informasi dan perusahaan
+              Media Kreatif terkemuka, didorong oleh dedikasi yang teguh terhadap
+              profesionalisme dan inovasi.
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all border border-gray-100 service-card"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-6"
+            >
+              <i class="ri-vr-line ri-lg text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Mengembangkan Solusi AR/VR</h3>
+            <p class="text-gray-600">
+              Mengembangkan solusi inovatif berbasis augmented dan virtual reality
+              untuk berbagai sektor, termasuk pendidikan, ritel, kesehatan, dan hiburan.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all border border-gray-100 service-card"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-6"
+            >
+              <i class="ri-gamepad-line ri-lg text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Membuat Game</h3>
+            <p class="text-gray-600">
+              Mendesain dan mengembangkan game edukatif dan menghibur
+              yang memberikan pengalaman serta pengetahuan berharga bagi pengguna.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all border border-gray-100 service-card"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-6"
+            >
+              <i class="ri-customer-service-2-line ri-lg text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Memberikan Bantuan kepada Klien</h3>
+            <p class="text-gray-600">
+              Memberikan dukungan menyeluruh kepada klien kami
+              mulai dari tahap ideasi awal, pengembangan, hingga
+              peluncuran produk akhir dan seterusnya.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            <span class="gradient-text">Layanan</span> Kami
+          </h2>
+          <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            Kami mengkhususkan diri dalam menciptakan pengalaman
+            imersif yang menggabungkan dunia digital dan fisik.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all border border-gray-100 service-card"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-6"
+            >
+              <i class="ri-augmented-reality-line ri-lg text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">AR Development</h3>
+            <p class="text-gray-600 mb-4">
+             Augmented Reality adalah teknologi yang menyatukan objek virtual ke dunia nyata
+             secara langsung dan interaktif melalui berbagai indera.
+            <a href="#" class="text-primary font-medium flex items-center">
+              Pelajari Selengkapnya
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all border border-gray-100 service-card"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-6"
+            >
+              <i class="ri-virtual-reality-line ri-lg text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">VR Development</h3>
+            <p class="text-gray-600 mb-4">
+              Virtual Reality (VR) adalah teknologi yang menciptakan pengalaman imersif dalam dunia digital,
+              memungkinkan pengguna berinteraksi dengan lingkungan 3D melalui headset VR.
+            </p>
+            <a href="#" class="text-primary font-medium flex items-center">
+              Pelajari Selengkapnya
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all border border-gray-100 service-card"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-6"
+            >
+              <i class="ri-game-line ri-lg text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Game Development</h3>
+            <p class="text-gray-600 mb-4">
+              Dari game mobile kasual hingga pengalaman konsol yang imersif,
+              kami mewujudkan konsep game Anda menjadi kenyataan.
+            </p>
+            <a href="#" class="text-primary font-medium flex items-center">
+              Pelajari Selengkapnya
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all border border-gray-100 service-card"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-6"
+            >
+              <i class="ri-customer-service-line ri-lg text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Layanan Konsultasi & Prototipe</h3>
+            <p class="text-gray-600 mb-4">
+              Bimbingan ahli dalam integrasi teknologi imersif serta
+              pembuatan prototipe cepat untuk memvalidasi konsep.
+            </p>
+            <a href="#" class="text-primary font-medium flex items-center">
+              Lihat Selengkapnya
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Projects Showcase -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Proyek <span class="gradient-text">Unggulan</span>
+          </h2>
+          <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            Temukan beberapa karya inovatif dan berdampak kami di berbagai industri.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all"
+          >
+            <img
+              src="AR.png"
+              alt="AR Retail Experience"
+              class="w-full h-64 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Pengalaman Ritel Berbasis AR</h3>
+              <p class="text-gray-600 mb-4">
+                Dengan AR, Joy Leap Studio membantu pelanggan ritel melihat produk di rumah mereka,
+                menciptakan pengalaman belanja yang mudah tanpa perlu ke toko fisik
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full"
+                  >AR</span
+                >
+                <span
+                  class="px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full"
+                  >Retail</span
+                >
+                <span
+                  class="px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full"
+                  >Mobile</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all"
+          >
+            <img
+              src="Vr.jpg"
+              alt="VR Training Simulator"
+              class="w-full h-64 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">VR Training Simulator</h3>
+              <p class="text-gray-600 mb-4">
+                VR Training Simulator di Joy Leap Studio adalah
+                solusi pelatihan berbasis VR yang memungkinkan pengguna berlatih
+                dalam simulasi aman dan realistis untuk berbagai sektor.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full"
+                  >VR</span
+                >
+                <span
+                  class="px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full"
+                  >Training</span
+                >
+                <span
+                  class="px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full"
+                  >Industrial</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all"
+          >
+            <img
+              src="Farm_Legacy.png"
+              alt="Educational Game"
+              class="w-full h-64 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">
+                Game Development
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Dari game mobile kasual hingga pengalaman konsol yang imersif,
+                kami mewujudkan konsep game Anda menjadi kenyataan
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full"
+                  >Game</span
+                >
+                <span
+                  class="px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full"
+                  >Education</span
+                >
+                <span
+                  class="px-3 py-1 bg-primary bg-opacity-10 text-primary text-sm rounded-full"
+                  >Mobile</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-12">
+          <a
+          href="https://joyleap.net/products/"
+            class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap"
+          >
+            Lihat Semua Proyek
+        </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            <span class="gradient-text">Hubungi</span> Kami
+          </h2>
+          <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+           Ayo wujudkan ide-ide Anda—bersama. Hubungi kami untuk membicarakan
+           bagaimana kami bisa membantu proyek Anda selanjutnya.
+          </p>
+        </div>
+        <div class="flex flex-col lg:flex-row gap-12">
+          <div class="w-full lg:w-1/2 bg-gray-50 rounded-lg p-8">
+            <h3 class="text-2xl font-semibold mb-6">Kirim PEsan Anda</h3>
+            <form>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="name" class="block text-gray-700 mb-2"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-gray-700 mb-2"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Abdul@example.com"
+                  />
+                </div>
+              </div>
+              <div class="mb-6">
+                <label for="subject" class="block text-gray-700 mb-2"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="subject"
+                  class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  placeholder="Project Inquiry"
+                />
+              </div>
+              <div class="mb-6">
+                <label for="message" class="block text-gray-700 mb-2"
+                  >Pesan</label
+                >
+                <textarea
+                  id="message"
+                  rows="5"
+                  class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  placeholder="Proyek apa saja yang bisa saya buat"
+                ></textarea>
+              </div>
+              <div class="mb-6 flex items-center">
+                <input
+                  type="checkbox"
+                  id="subscribe"
+                  class="custom-checkbox mr-3"
+                />
+                <label for="subscribe" class="text-gray-700"
+                  >Subscribe to our newsletter</label
+                >
+              </div>
+              <button
+                type="submit"
+                class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap w-full"
+              >
+                Kirim Pesan
+              </button>
+            </form>
+          </div>
+          <div class="w-full lg:w-1/2">
+            <div class="bg-gray-50 rounded-lg p-8 mb-8">
+              <h3 class="text-2xl font-semibold mb-6">Informasi Kontak</h3>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center mr-4 text-primary"
+                  >
+                    <i class="ri-map-pin-line ri-lg"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium">Alamat</h4>
+                    <p class="text-gray-600">
+                      Jl. Quality Garden Residence No.24 Blok H7, Gamping Wetan, Gamping,
+                      Kecamatan Krian, Kabupaten Sidoarjo, Jawa Timur 61262.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center mr-4 text-primary"
+                  >
+                    <i class="ri-mail-line ri-lg"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium">Email</h4>
+                    <p class="text-gray-600">hello@joyleapstudio.com</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center mr-4 text-primary"
+                  >
+                    <i class="ri-phone-line ri-lg"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium">Phone</h4>
+                    <p class="text-gray-600">+62 21 1234 5678</p>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-8">
+                <h4 class="font-medium mb-4">Ikuti Kami</h4>
+                <div class="flex space-x-4">
+                  <a
+                    href="#"
+                    class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+                  >
+                    <i class="ri-instagram-line"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+                  >
+                    <i class="ri-twitter-x-line"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+                  >
+                    <i class="ri-linkedin-line"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+                  >
+                    <i class="ri-facebook-line"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-8">
+              <h3 class="text-2xl font-semibold mb-6">Jam Kerja</h3>
+              <div class="space-y-2">
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Senin - Jumat</span>
+                  <span class="font-medium">9:00 AM - 6:00 PM</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Sabtu</span>
+                  <span class="font-medium">10:00 AM - 4:00 PM</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-600">Minggu</span>
+                  <span class="font-medium">Closed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Newsletter Section -->
+    <section
+      class="py-16 bg-gradient-to-r from-primary to-secondary text-white"
+    >
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-4">
+            Dapatkan Informasi Terbaru tentang Inovasi Kami
+          </h2>
+          <p class="mb-8">
+            Langganan buletin kami untuk menerima pembaruan
+            tentang tren teknologi imersif, tampilan proyek, dan wawasan eksklusif.
+          </p>
+          <div class="flex flex-col md:flex-row gap-4 max-w-xl mx-auto">
+            <input
+              type="email"
+              placeholder="Enter your email address"
+              class="flex-grow px-4 py-3 rounded-l-lg text-gray-800 focus:outline-none"
+            />
+            <button
+              class="bg-white text-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-100 transition-all whitespace-nowrap"
+            >
+              Subscribe Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-6">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
+        >
+          <div>
+            <a href="#" class="text-3xl font-['Pacifico'] text-white mb-6 block"
+              >Joy LEap</a
+            >
+            <p class="text-gray-400 mb-6">
+              "Mewujudkan ide-ide kreatif dengan teknologi imersif.
+              Kami ahli dalam solusi AR, VR, dan pengembangan game
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-all"
+              >
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-all"
+              >
+                <i class="ri-twitter-x-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-all"
+              >
+                <i class="ri-linkedin-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-all"
+              >
+                <i class="ri-facebook-line"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-6">Tautan Kilat</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-white transition-all"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-white transition-all"
+                  >Tentang Kami</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#vision"
+                  class="text-gray-400 hover:text-white transition-all"
+                  >Visi & Misi</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-white transition-all"
+                  >Pelayanan Kami</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition-all"
+                  >Kontak</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-6">Pelayanan Kami</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-all"
+                  >AR Development</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-all"
+                  >VR Development</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-all"
+                  >Game Development</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-all"
+                  >Consulting & Prototyping</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-all"
+                  >Custom Solutions</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-6">Hubungi Kami</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <div
+                  class="w-6 h-6 flex items-center justify-center mr-3 text-gray-400"
+                >
+                  <i class="ri-map-pin-line"></i>
+                </div>
+                <span class="text-gray-400"
+                  >Jl. Quality Garden Residence No.24 Blok H7, Gamping Wetan, Gamping,
+                  Kecamatan Krian, Kabupaten Sidoarjo, Jawa Timur 61262.</span
+                >
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-6 h-6 flex items-center justify-center mr-3 text-gray-400"
+                >
+                  <i class="ri-mail-line"></i>
+                </div>
+                <span class="text-gray-400">hello@joyleapstudio.com</span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="w-6 h-6 flex items-center justify-center mr-3 text-gray-400"
+                >
+                  <i class="ri-phone-line"></i>
+                </div>
+                <span class="text-gray-400">+62 21 1234 5678</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm mb-4 md:mb-0">
+              &copy; 2025 Latifa Irsyadiyah 
+            </p>
+            <div class="flex space-x-6">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white text-sm transition-all"
+                >Privacy Policy</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white text-sm transition-all"
+                >Terms of Service</a
+              >
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white text-sm transition-all"
+                >Cookies Policy</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+          if (mobileMenu.classList.contains("hidden")) {
+            mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-lg"></i>';
+          } else {
+            mobileMenuButton.innerHTML = '<i class="ri-close-line ri-lg"></i>';
+          }
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Header scroll effect
+        const header = document.querySelector("header");
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 50) {
+            header.classList.add("shadow-md");
+            header.classList.remove("py-4");
+            header.classList.add("py-3");
+          } else {
+            header.classList.remove("shadow-md");
+            header.classList.remove("py-3");
+            header.classList.add("py-4");
+          }
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+              // Close mobile menu if open
+              const mobileMenu = document.getElementById("mobile-menu");
+              if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+                mobileMenu.classList.add("hidden");
+                document.getElementById("mobile-menu-button").innerHTML =
+                  '<i class="ri-menu-line ri-lg"></i>';
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
